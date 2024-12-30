@@ -2,6 +2,7 @@ import "./App.css";
 import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
+import Like from "./components/Like";
 import { useState } from "react";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       >
         Text Button
       </Button>
+      <Like onClick={() => console.log("Like Clicked")} />
       <ListGroup
         items={items}
         heading={"List Group"}
