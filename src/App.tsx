@@ -3,6 +3,7 @@ import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import Like from "./components/Like";
+import ExpandableText from "./components/ExpandableText";
 import { useState } from "react";
 import { produce } from "immer";
 
@@ -62,6 +63,19 @@ function App() {
           console.log(item);
         }}
       />
+      <ExpandableText maxLength={5}>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero ex et
+        voluptatibus laudantium excepturi fugit necessitatibus similique
+        officiis, beatae atque ad illo blanditiis dignissimos omnis minus.
+        Consectetur saepe sed debitis delectus aut rerum odit dignissimos libero
+        id quam optio quis fugiat repellendus, sint soluta natus cum repellat?
+        Repudiandae quo quod reiciendis fugiat omnis blanditiis illo, at
+        inventore, aliquid quae corrupti. Dolores, ea! Eveniet necessitatibus
+        quibusdam quia voluptatum ad quos totam ipsum laborum in sequi
+        architecto, cum porro pariatur magni similique vel assumenda ratione
+        doloribus nostrum delectus perspiciatis vero aperiam. Pariatur
+        accusantium dolor qui, expedita obcaecati dolores porro velit iusto vel!
+      </ExpandableText>
     </>
   );
 }
