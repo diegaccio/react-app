@@ -6,6 +6,7 @@ import Like from "./components/Like";
 import ExpandableText from "./components/ExpandableText";
 import { useState } from "react";
 import { produce } from "immer";
+import FormWithHook from "./components/FormWithHook";
 
 function App() {
   let items = ["Cippa", "Lippa", "Zippa", "Pippa"];
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+      <FormWithHook />
       <div>
         {bugs.map((bug) => (
           <div key={bug.id}>

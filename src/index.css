@@ -1,0 +1,4 @@
+body {
+    padding: 20px;
+}
+::-webkit-validation-bubble-message { display: none; }
