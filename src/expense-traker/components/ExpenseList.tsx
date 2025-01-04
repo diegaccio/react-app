@@ -7,15 +7,10 @@ interface Expense {
 
 interface ExpenseListProps {
   expenses: Expense[];
-  filterSelection: string;
   onDelete: (id: number) => void;
 }
 
-const ExpenseList = ({
-  expenses,
-  filterSelection,
-  onDelete,
-}: ExpenseListProps) => {
+const ExpenseList = ({ expenses, onDelete }: ExpenseListProps) => {
   if (expenses.length === 0) {
     return <div>No expenses</div>;
   }
@@ -31,23 +26,21 @@ const ExpenseList = ({
         </tr>
       </thead>
       <tbody>
-        {expenses
-          .filter((expenses) => expenses.category != filterSelection)
-          .map((expense) => (
-            <tr key={expense.id}>
-              <td>{expense.description}</td>
-              <td>€ {expense.amount.toFixed(2)}</td>
-              <td>{expense.category}</td>
-              <td>
-                <button
-                  onClick={() => onDelete(expense.id)}
-                  className="btn btn-outline-danger"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+        {expenses.map((expense) => (
+          <tr key={expense.id}>
+            <td>{expense.description}</td>
+            <td>€ {expense.amount.toFixed(2)}</td>
+            <td>{expense.category}</td>
+            <td>
+              <button
+                onClick={() => onDelete(expense.id)}
+                className="btn btn-outline-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        ))}
       </tbody>
       <tfoot>
         <tr>

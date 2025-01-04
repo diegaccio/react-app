@@ -9,6 +9,7 @@ import { produce } from "immer";
 import FormWithHook from "./components/FormWithHook";
 import ExpenseList from "./expense-traker/components/ExpenseList";
 import ExpenseFilter from "./expense-traker/components/ExpenseFilter";
+import ExpenseForm from "./expense-traker/components/ExpenseForm";
 
 function App() {
   let items = ["Cippa", "Lippa", "Zippa", "Pippa"];
@@ -36,28 +37,42 @@ function App() {
   };
 
   const [expenses, setExpenses] = useState([
-    { id: 1, description: "Expense 1", amount: 100, category: "Category 1" },
-    { id: 2, description: "Expense 2", amount: 100, category: "Category 1" },
-    { id: 3, description: "Expense 3", amount: 100, category: "Category 2" },
-    { id: 4, description: "Expense 4", amount: 100, category: "Category 2" },
+    { id: 1, description: "Expense 1", amount: 100, category: "Utilities" },
+    { id: 2, description: "Expense 2", amount: 100, category: "Utilities" },
+    { id: 3, description: "Expense 3", amount: 100, category: "Groceries" },
+    { id: 4, description: "Expense 4", amount: 100, category: "Groceries" },
   ]);
 
-  //TODO filter expenses here without another state
   const [filterSelection, setFilterSelection] = useState("");
 
   const onFilterChange = (filter: string) => {
     setFilterSelection(filter);
   };
 
+  const filteredExpenses =
+    filterSelection != ""
+      ? expenses.filter((expenses) => expenses.category === filterSelection)
+      : expenses;
+
   return (
     <>
+      <h1>Expense Tracker</h1>
+      <div className="mb-5">
+        <ExpenseForm
+          onAddExpense={(newExpense) =>
+            setExpenses([
+              ...expenses,
+              { ...newExpense, id: expenses[expenses.length - 1].id + 1 },
+            ])
+          }
+        ></ExpenseForm>
+      </div>
       <div className="mb-3">
         <ExpenseFilter onFilterChange={onFilterChange} />
       </div>
 
       <ExpenseList
-        expenses={expenses}
-        filterSelection={filterSelection}
+        expenses={filteredExpenses}
         onDelete={onDelete}
       ></ExpenseList>
       <div className="invisible">
