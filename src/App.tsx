@@ -10,6 +10,7 @@ import FormWithHook from "./components/FormWithHook";
 import ExpenseList from "./expense-traker/components/ExpenseList";
 import ExpenseFilter from "./expense-traker/components/ExpenseFilter";
 import ExpenseForm from "./expense-traker/components/ExpenseForm";
+import UserList from "./components/UserList";
 
 function App() {
   let items = ["Cippa", "Lippa", "Zippa", "Pippa"];
@@ -75,6 +76,9 @@ function App() {
         expenses={filteredExpenses}
         onDelete={onDelete}
       ></ExpenseList>
+
+      <h1>User List</h1>
+      <UserList></UserList>
       <div className="invisible">
         <FormWithHook />
         <div>
